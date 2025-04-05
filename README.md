@@ -27,7 +27,7 @@ Use the `test_temp_sensor` folder to verify proper wiring and sensor communicati
 - **Print Speed:** 45.0 mm/s  
 - **Supports:** Tree  
 
-📎 *Refer to `Minato Temp Sensor_Slicer.pdf` for exact printer tuning and visual guide.*
+📎 *Refer to `Minato_Kunai_Schematic.png` for wiring.*
 
 **STL Info:**
 - `hole.stl` has a Z-axis height of **12.3918 mm** for optimal sensor fitting.
