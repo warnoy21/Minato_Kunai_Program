@@ -8,6 +8,7 @@
 
 1.0.0     Initial Creation
 1.0.1     Flipped the seven segment display for the 3D frame
+1.0.2     Changed to using delay instead of millis
 
 
 */
@@ -33,28 +34,28 @@ unsigned long lastRunTime = 0; // Tracks the last time calculation() was called
 const unsigned long interval = 900000; // 15 minutes = 900,000 milliseconds
 
 //flipped seven segment display values
-//uint8_t zero = {SEG_A|SEG_B|SEG_C|SEG_D|SEG_E|SEG_F};
-// uint8_t one = {SEG_E|SEG_F};
-// uint8_t two = {SEG_A|SEG_B|SEG_D|SEG_E|SEG_G};
-// uint8_t three = {SEG_A|SEG_E|SEG_F|SEG_D|SEG_G};
-// uint8_t four = {SEG_C|SEG_F|SEG_G|SEG_E};
-// uint8_t five = {SEG_A|SEG_C|SEG_D|SEG_F|SEG_G};
-// uint8_t six = {SEG_A|SEG_B|SEG_F|SEG_G|SEG_C|SEG_D};
-// uint8_t seven = {SEG_E|SEG_F|SEG_D};
-// uint8_t eight = {SEG_A|SEG_B|SEG_C|SEG_D|SEG_E|SEG_F|SEG_G};
-// uint8_t nine = {SEG_E|SEG_F|SEG_D|SEG_G|SEG_C};
+uint8_t zero = {SEG_A|SEG_B|SEG_C|SEG_D|SEG_E|SEG_F};
+uint8_t one = {SEG_B|SEG_C};
+uint8_t two = {SEG_A|SEG_B|SEG_D|SEG_E|SEG_G};
+uint8_t three = {SEG_A|SEG_B|SEG_C|SEG_D|SEG_G};
+uint8_t four = {SEG_C|SEG_F|SEG_B|SEG_G};
+uint8_t five = {SEG_A|SEG_C|SEG_D|SEG_F|SEG_G};
+uint8_t six = {SEG_A|SEG_E|SEG_F|SEG_G|SEG_C|SEG_D};
+uint8_t seven = {SEG_A|SEG_B|SEG_C};
+uint8_t eight = {SEG_A|SEG_B|SEG_C|SEG_D|SEG_E|SEG_F|SEG_G};
+uint8_t nine = {SEG_A|SEG_B|SEG_G|SEG_F|SEG_C};
 
 //seven segment display values
-uint8_t zero = {SEG_A|SEG_B|SEG_C|SEG_D|SEG_E|SEG_F};
-uint8_t one = {SEG_F|SEG_E};
-uint8_t two = {SEG_D|SEG_E|SEG_G|SEG_B|SEG_A};
-uint8_t three = {SEG_D|SEG_E|SEG_F|SEG_A|SEG_G};
-uint8_t four = {SEG_C|SEG_G|SEG_E|SEG_F};
-uint8_t five = {SEG_D|SEG_C|SEG_G|SEG_F|SEG_A};
-uint8_t six = {SEG_D|SEG_C|SEG_B|SEG_A|SEG_F|SEG_G};
-uint8_t seven = {SEG_D|SEG_E|SEG_F};
-uint8_t eight = {SEG_A|SEG_B|SEG_C|SEG_D|SEG_E|SEG_F|SEG_G};
-uint8_t nine = {SEG_D|SEG_C|SEG_G|SEG_E|SEG_F};
+// uint8_t zero = {SEG_A|SEG_B|SEG_C|SEG_D|SEG_E|SEG_F};
+// uint8_t one = {SEG_F|SEG_E};
+// uint8_t two = {SEG_D|SEG_E|SEG_G|SEG_B|SEG_A};
+// uint8_t three = {SEG_D|SEG_E|SEG_F|SEG_A|SEG_G};
+// uint8_t four = {SEG_C|SEG_G|SEG_E|SEG_F};
+// uint8_t five = {SEG_D|SEG_C|SEG_G|SEG_F|SEG_A};
+// uint8_t six = {SEG_D|SEG_C|SEG_B|SEG_A|SEG_F|SEG_G};
+// uint8_t seven = {SEG_D|SEG_E|SEG_F};
+// uint8_t eight = {SEG_A|SEG_B|SEG_C|SEG_D|SEG_E|SEG_F|SEG_G};
+// uint8_t nine = {SEG_D|SEG_C|SEG_G|SEG_E|SEG_F};
 
 
 void reset (void){
@@ -200,6 +201,7 @@ void calculation() {
       tens = 0;
       ones= mean;
     }
+   
     convert_for_display(tens,ones);
    }
 void setup() {
@@ -230,12 +232,13 @@ void setup() {
 
 void loop() {
     
-    unsigned long currentTime = millis(); // Get the current time in milliseconds
-    // Check if one hour has passed
-    if (currentTime - lastRunTime >= interval) {
-      lastRunTime = currentTime; 
-      calculation();         
-    }
-
+    // unsigned long currentTime = millis(); // Get the current time in milliseconds
+    // // Check if one hour has passed
+    // if (currentTime - lastRunTime >= interval) {
+    //   lastRunTime = currentTime; 
+    //   calculation();         
+    // }
+    calculation(); 
+    delay(900000);
 
 }
