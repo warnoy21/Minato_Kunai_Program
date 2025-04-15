@@ -226,7 +226,7 @@ void setup() {
                   Adafruit_BMP280::FILTER_X16,      /* Filtering. */
                   Adafruit_BMP280::STANDBY_MS_500); /* Standby time. */
   calculation();  // Run once at startup
-  lastRunTime = millis(); // Initialize timer
+  #lastRunTime = millis(); // Initialize timer
 }
 
 
